@@ -1,0 +1,7 @@
+{% extends "main/main_template.html" %}
+
+{% block title %}Домашняя страница сайта рецептов{% endblock title %}
+
+{% block content %}
+    <p class="h1 text-center mt-5">Приветствуем на главной странице нашего сайта, {% if username %}{{ username }}{% else %}Гость{% endif %}</p>
+{% endblock content %}
