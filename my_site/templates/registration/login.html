@@ -1,0 +1,42 @@
+{% extends "main/main_template.html" %}
+
+{% block title %}Login Page{% endblock title %}
+
+{% block content %}
+    {% if messages %}
+        ttt
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="" class="form-label">Логин</label>
+            <input
+                type="text"
+                class="form-control"
+                name="username"
+                id=""
+                aria-describedby="helpId"
+                placeholder=""
+            />
+            <small id="helpId" class="form-text text-muted">Введите свой логин</small>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Пароль</label>
+            <input
+                type="password"
+                class="form-control"
+                name="password"
+                id=""
+                placeholder=""
+            />
+        </div>
+        
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Войти
+        </button>
+        
+    </form>
+{% endblock content %}
