@@ -34,6 +34,18 @@
             <small id="helpId" class="form-text text-muted">Введите свой логин</small>
         </div>
         <div class="mb-3">
+            <label for="" class="form-label">Почта</label>
+            <input
+                type="text"
+                class="form-control"
+                name="email"
+                id=""
+                aria-describedby="helpId"
+                placeholder=""
+            />
+            <small id="helpId" class="form-text text-muted">Введите свою почту</small>
+        </div>
+        <div class="mb-3">
             <label for="" class="form-label">Пароль</label>
             <input
                 type="password"
@@ -43,15 +55,24 @@
                 placeholder=""
             />
         </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Пароль повторно</label>
+            <input
+                type="password"
+                class="form-control"
+                name="confirm_password"
+                id=""
+                placeholder=""
+            />
+            <small id="helpId" class="form-text text-muted">Подтвердите пароль</small>
+        </div>
         
         <button
             type="submit"
             class="btn btn-primary"
         >
-            Войти
+            Зарегистрироваться
         </button>
         
     </form>
-    <hr>
-    <p class="text-end"><a class="link-primary" href="{% url 'registration' %}">Регистрация</a></p>
 {% endblock content %}
