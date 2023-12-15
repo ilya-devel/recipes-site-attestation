@@ -21,52 +21,7 @@
     {% endif %}
     <form action="" method="post">
         {% csrf_token %}
-        {% comment %} <div class="mb-3">
-            <label for="" class="form-label">Логин</label>
-            <input
-                type="text"
-                class="form-control"
-                name="username"
-                id=""
-                aria-describedby="helpId"
-                placeholder=""
-            />
-            <small id="helpId" class="form-text text-muted">Введите свой логин</small>
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Почта</label>
-            <input
-                type="text"
-                class="form-control"
-                name="email"
-                id=""
-                aria-describedby="helpId"
-                placeholder=""
-            />
-            <small id="helpId" class="form-text text-muted">Введите свою почту</small>
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Пароль</label>
-            <input
-                type="password"
-                class="form-control"
-                name="password"
-                id=""
-                placeholder=""
-            />
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Пароль повторно</label>
-            <input
-                type="password"
-                class="form-control"
-                name="confirm_password"
-                id=""
-                placeholder=""
-            />
-            <small id="helpId" class="form-text text-muted">Подтвердите пароль</small>
-        </div> {% endcomment %}
-        
+
         {{ form }}
 
         <button
