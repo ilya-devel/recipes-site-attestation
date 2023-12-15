@@ -21,7 +21,7 @@
     {% endif %}
     <form action="" method="post">
         {% csrf_token %}
-        <div class="mb-3">
+        {% comment %} <div class="mb-3">
             <label for="" class="form-label">Логин</label>
             <input
                 type="text"
@@ -65,11 +65,13 @@
                 placeholder=""
             />
             <small id="helpId" class="form-text text-muted">Подтвердите пароль</small>
-        </div>
+        </div> {% endcomment %}
         
+        {{ form }}
+
         <button
             type="submit"
-            class="btn btn-primary"
+            class="btn btn-primary mt-3"
         >
             Зарегистрироваться
         </button>
