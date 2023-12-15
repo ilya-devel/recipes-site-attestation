@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from . import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-2purt7n-4$0!=6ft#yy(yfqxw)$uf+c1n6rbajf!^3pzxk!(hg"
+SECRET_KEY = env.settings.SECRET_KEY
+
+# "django-insecure-2purt7n-4$0!=6ft#yy(yfqxw)$uf+c1n6rbajf!^3pzxk!(hg"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,7 +81,7 @@ WSGI_APPLICATION = "my_site.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
+        "ENGINE": env.settings.DB_ENGINE,  # "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
@@ -138,24 +141,24 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
-            },
+        },
         'file': {
             'class': 'logging.FileHandler',
             'filename': './log/django.log',
             'formatter': 'verbose',
-            },
         },
+    },
     'loggers': {
         'django': {
             'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': True,
-            },
+        },
         'recipes_book': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
             'propagate': True,
-            }
+        }
     }
 }
 
