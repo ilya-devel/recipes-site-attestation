@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "reg_user",
     "recipes_book",
 ]
 
@@ -155,6 +156,11 @@ LOGGING = {
             'propagate': True,
         },
         'recipes_book': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'reg_user': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
             'propagate': True,
