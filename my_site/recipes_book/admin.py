@@ -4,8 +4,8 @@ from . import models
 
 @admin.register(models.Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ['title', 'make_time', 'author', 'create_date',
-                'update_date', 'is_public', 'is_active']
+    list_display = ['id', 'title', 'make_time', 'author', 'create_date',
+                    'update_date', 'is_public', 'is_active']
     list_filter = ['create_date', 'update_date']
     ordering = ['-update_date']
     readonly_fields = ['create_date', 'update_date']
@@ -22,7 +22,7 @@ class RecipeAdmin(admin.ModelAdmin):
             'О рецепте',
             {
                 'classes': ['collapse', 'wide'],
-                'fields': ['steps', 'make_time', 'image', 'author']
+                'fields': ['products', 'steps', 'make_time', 'image', 'author']
             }
         ),
         (
