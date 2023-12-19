@@ -21,7 +21,7 @@
     </head>
 
     <body>
-        <header>
+        <header class="container-md">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                   <a class="navbar-brand" href="{% url "home_page" %}">RecipesBook</a>
@@ -34,13 +34,7 @@
                         <a class="nav-link" aria-current="page" href="{% url "home_page" %}">Главная</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="/admin/">Admin</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="{% url "add_recipe" %}">Добавить рецепт</a>
                       </li>
                       {% if user.is_authenticated %}
                         <li class="nav-item">
@@ -70,8 +64,11 @@
             </div>
             
         </main>
-        <footer>
-            <!-- place footer here -->
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="{% url "home_page" %}" class="nav-link px-2 text-muted">Главная</a></li>
+          </ul>
+          <p class="text-center text-muted">© 2023 Ilya.Devel Project</p>
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script
