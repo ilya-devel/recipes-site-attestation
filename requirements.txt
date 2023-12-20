@@ -1,6 +1,6 @@
 annotated-types==0.6.0
 asgiref==3.7.2
-Django==5.0
+Django==4.1
 Pillow==10.1.0
 pydantic==2.5.2
 pydantic-settings==2.1.0
@@ -8,3 +8,6 @@ pydantic_core==2.14.5
 python-dotenv==1.0.0
 sqlparse==0.4.4
 typing_extensions==4.9.0
+mysqlclient==2.0.1
+django-mysql==3.8.1
+Markdown==3.5.1

@@ -28,7 +28,10 @@ SECRET_KEY = env.settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '0.0.0.0'
+]
 
 
 # Application definition
@@ -80,10 +83,24 @@ WSGI_APPLICATION = "my_site.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env.settings.DB_ENGINE,  # "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": env.settings.DB_ENGINE,  # "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": 'django.db.backends.mysql',  # "django.db.backends.sqlite3",
+        "NAME": "db_django",
+        "USER": "root",
+        "PASSWORD":"password",
+        "HOST": "db",
+        "PORT": '3306',
+        "OPTIONS": {
+            'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES';",
+            'charset': 'utf8mb4'
+            },
     }
 }
 
