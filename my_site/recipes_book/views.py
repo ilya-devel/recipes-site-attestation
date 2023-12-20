@@ -1,6 +1,6 @@
 import logging
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404, get_list_or_404, HttpResponse, redirect
+from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from . import models, forms
@@ -29,7 +29,7 @@ def index(request):
 
 
 def recipe_info(request, id: int):
-    recipe = models.Recipe.objects.filter(pk=id).first()
+    recipe = get_object_or_404(models.Recipe, pk=id)
     context = {
         'recipe': recipe
     }
@@ -107,3 +107,52 @@ def edit_recipe(request, id: int):
         'recipe': recipe,
     }
     return render(request, 'recipes_book/edit.html', context=context)
+
+
+@login_required
+def del_recipe(request, id: int):
+    recipe = get_object_or_404(models.Recipe, pk=id)
+    if request.user.id != recipe.author.id:
+        return HttpResponse("<h1>Удаление рецепта может проводить только его автор</h1>")
+    form = forms.DelConfirmForm()
+    if request.method == 'POST':
+        form = forms.DelConfirmForm(request.POST)
+        if form.is_valid():
+            recipe.is_active = False
+            recipe.save()
+            logger.info(f"Автор удалил рецепт {recipe.id}")
+            return redirect('home_page')
+    context = {
+        'form': form,
+        'recipe': recipe,
+    }
+    return render(request, 'recipes_book/del_confirm.html', context=context)
+
+
+def list_category(request):
+    categories = models.Category.objects.order_by('name')
+    context = {
+        'categories': categories,
+    }
+    return render(request, 'recipes_book/categories.html', context=context)
+
+
+def get_category(request, pk):
+    category = get_object_or_404(models.Category, pk=pk)
+    recipes = models.Recipe.objects.filter(category__in=[category]).filter(
+        is_public=True).filter(is_active=True)
+
+    context = {
+        'category': category,
+        'recipes': recipes,
+    }
+    return render(request, 'recipes_book/category.html', context=context)
+
+
+@login_required
+def my_recipes(request):
+    recipes = models.Recipe.objects.filter(author_id=request.user.id).filter(is_active=True).order_by('-update_date')
+    context = {
+        'recipes': recipes,
+    }
+    return render(request, 'recipes_book/my_recipes.html', context=context)

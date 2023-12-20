@@ -34,9 +34,15 @@
                         <a class="nav-link" aria-current="page" href="{% url "home_page" %}">Главная</a>
                       </li>
                       <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url "lst_category" %}">Категории рецептов</a>
+                      </li>
+                      <li class="nav-item">
                         <a class="nav-link" href="{% url "add_recipe" %}">Добавить рецепт</a>
                       </li>
                       {% if user.is_authenticated %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url "my_recipes" %}">Мои рецепты</a>
+                        </li>
                         <li class="nav-item">
                           <form action="{% url "logout" %}" method="post">
                             {% csrf_token %}

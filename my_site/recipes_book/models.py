@@ -8,6 +8,10 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("category", kwargs={"pk": self.pk})
+    
 
 
 class Recipe(models.Model):

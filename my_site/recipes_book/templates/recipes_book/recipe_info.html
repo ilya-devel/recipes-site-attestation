@@ -24,7 +24,8 @@
     <hr>
     {% if user.is_authenticated %}
         {% if recipe.author.id == user.id %}
-            <p class="text-end"><a href="{{ recipe.get_absolute_url }}edit/">Редактирование</a></p>        
+            <p class="text-end"><a href="{{ recipe.get_absolute_url }}edit/">Редактирование</a></p>
+            <p class="text-end"><a href="{{ recipe.get_absolute_url }}delete/">Удаление</a></p>        
         {% endif %}
     {% endif %}
 {% endblock content %}
