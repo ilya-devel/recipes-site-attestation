@@ -91,12 +91,12 @@ WSGI_APPLICATION = "my_site.wsgi.application"
 # }
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.mysql',  # "django.db.backends.sqlite3",
-        "NAME": "db_django",
-        "USER": "root",
-        "PASSWORD":"password",
-        "HOST": "db",
-        "PORT": '3306',
+        "ENGINE": env.settings.DB_ENGINE,  # "django.db.backends.sqlite3",
+        "NAME": env.settings.DB_NAME,
+        "USER": env.settings.DB_USER,
+        "PASSWORD":env.settings.DB_PASSWORD,
+        "HOST": env.settings.DB_HOST,
+        "PORT": env.settings.DB_PORT,
         "OPTIONS": {
             'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES';",
             'charset': 'utf8mb4'
